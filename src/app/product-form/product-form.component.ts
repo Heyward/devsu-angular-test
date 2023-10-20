@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, formatDate } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../products.service';
 import { Product } from '../product';
 import { RouterModule } from '@angular/router';
@@ -32,7 +32,8 @@ export class ProductFormComponent {
   get date_revision() { return this.form.get('date_revision'); }
 
 
-  constructor(private productService: ProductsService, private uniqueProductIdValidator: UniqueProductIdValidator) {
+  constructor(private productService: ProductsService, private uniqueProductIdValidator: UniqueProductIdValidator, private router: Router) {
+
     this.form = new FormGroup({
       id: new FormControl('',[
         Validators.required, 
@@ -110,6 +111,8 @@ export class ProductFormComponent {
     } else {
       this.productService.saveProduct(product).subscribe();
     }
+
+    this.router.navigate(['/']);
   }
 
 }

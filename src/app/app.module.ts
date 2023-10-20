@@ -10,13 +10,6 @@ import {RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 
-bootstrapApplication(AppComponent,
-  {providers: [
-    provideProtractorTestingSupport(),
-    provideRouter(routeConfig),
-    provideHttpClient()
-  ]})
-.catch(err => console.error(err));
 
 @NgModule({
   declarations: [
