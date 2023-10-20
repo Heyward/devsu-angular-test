@@ -1,0 +1,15 @@
+#banner {
+    background-color: #ffffff;
+}
+
+#banner img{
+    margin: 0 auto;
+    width: 200px;
+    display: block;
+}
+
+#container{
+    width: 70%;;
+    margin: 20px auto;
+}
+

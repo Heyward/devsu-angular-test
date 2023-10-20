@@ -1,0 +1,135 @@
+<section id="head-list">
+    <a class="button main" [routerLink]="['/']">Volver</a>
+</section>
+
+<section id="producto-form">
+    <div class="title">Formulario de registro</div>
+
+    <section id="form-container">
+        <form [formGroup]="form" (submit)="submit()">
+            <section id="fields">
+                <div class="row">
+                    <div class="column">
+
+                        <div [ngClass]="{'alert': id?.invalid && (id?.dirty || id?.touched)}" class="input">
+                            <label for="id">ID</label>
+                            <input id="id" type="text" formControlName="id" required>
+
+                            <div *ngIf="id?.invalid && (id?.dirty || id?.touched)" class="alert error">
+                                <div *ngIf="id?.errors?.['required']">
+                                    El id es requerido.
+                                </div>
+                                <div *ngIf="id?.errors?.['minlength']">
+                                    El id debe ser mínimo de 3 caracteres.
+                                </div>
+                                <div *ngIf="id?.errors?.['maxlength']">
+                                    El id debe ser máximo de 10 caracteres.
+                                </div>
+                                <div *ngIf="id?.errors?.['uniqueProductIdValidator']">
+                                    El id ya existe.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div [ngClass]="{'alert': description?.invalid && (description?.dirty || description?.touched)}"
+                            class="input">
+
+                            <label for="description">Descripción</label>
+                            <input id="description" type="text" formControlName="description" required>
+
+                            <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="alert error">
+                                <div *ngIf="description?.errors?.['required']">
+                                    La descripción es requerido.
+                                </div>
+                                <div *ngIf="description?.errors?.['minlength']">
+                                    La descripción debe ser mínimo de 10 caracteres.
+                                </div>
+                                <div *ngIf="description?.errors?.['maxlength']">
+                                    La descripción debe ser máximo de 200 caracteres.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div [ngClass]="{'alert': date_release?.invalid && (date_release?.dirty || date_release?.touched)}"
+                            class="input">
+
+                            <label for="date_release">Fecha liberación</label>
+                            <input id="date_release" type="date" formControlName="date_release" required>
+
+                            <div *ngIf="date_release?.invalid && (date_release?.dirty || date_release?.touched)"
+                                class="alert  error" >
+                                <div *ngIf="date_release?.errors?.['required']">
+                                    La Fecha liberación es requerido.
+                                </div>
+                                <div *ngIf="date_release?.errors?.['currentDateOrFuture']">
+                                    La Fecha liberación debe ser superior a la actual.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="column">
+                        <div [ngClass]="{'alert': name?.invalid && (name?.dirty || name?.touched)}" class="input">
+
+                            <label for="name">Nombre</label>
+                            <input id="name" type="text" formControlName="name" required>
+
+                            <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert error">
+                                <div *ngIf="name?.errors?.['required']">
+                                    El nombre es requerido.
+                                </div>
+                                <div *ngIf="name?.errors?.['minlength']">
+                                    El nombre debe ser mínimo de 5 caracteres.
+                                </div>
+                                <div *ngIf="name?.errors?.['maxlength']">
+                                    El nomre debe ser máximo de 100 caracteres.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div [ngClass]="{'alert': logo?.invalid && (logo?.dirty || logo?.touched)}" class="input">
+
+                            <label for="logo">Logo</label>
+                            <input id="logo" type="text" formControlName="logo" required>
+
+                            <div *ngIf="logo?.invalid && (logo?.dirty || logo?.touched)" class="alert  error">
+                                <div *ngIf="logo?.errors?.['required']">
+                                    El logo es requerido.
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div [ngClass]="{'alert': date_revision?.invalid && (date_revision?.dirty || date_revision?.touched)}"
+                            class="input">
+
+                            <label for="date_revision">Fecha revisión</label>
+                            <input id="date_revision" type="date" formControlName="date_revision" required>
+
+                            <div *ngIf="date_revision?.invalid && (date_revision?.dirty || date_revision?.touched)"
+                                class="alert  error">
+                                <div *ngIf="date_revision?.errors?.['required']">
+                                    La Fecha revisión es requerida.
+                                </div>
+                                <div *ngIf="date_revision?.errors?.['oneYearLater']">
+                                    La Fecha revisión debe ser un año despues de la de liberación.
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </section>
+
+
+            <section id="buttons">
+                <button class="button" type="button" (click)="reset()">Reiniciar</button>
+                <button class="button main" type="submit" [disabled]="!form.valid">Guardar</button>
+            </section>
+        </form>
+    </section>
+</section>

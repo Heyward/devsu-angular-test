@@ -1,0 +1,60 @@
+<section id="producto-list">
+
+    <section id="head-list">
+        <input type="text" placeholder="Escribe para buscar" (keyup)="filterResults(filter.value)" #filter>
+        <a class="button main" [routerLink]="['/products/0']">Agregar</a>
+    </section>
+
+    <section id="list">
+        <section id="table">
+            <table [cellPadding]="0" [cellSpacing]="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Fecha de liberación</th>
+                        <th>Fecha de estructuración</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of filteredProducts">
+                        <td>{{product.id}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.description}}</td>
+                        <td>{{product.date_release}}</td>
+                        <td>{{product.date_revision}}</td>
+                        <td>
+                            <a [routerLink]="['/products', product.id]">Editar</a>&nbsp;
+                            <a (click)="delete(product)" href="#">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="footer">
+            <div id="total">{{total}} resultados</div>
+            <div id="paginator">
+                <div>
+                    <button class="button small" (click)="prev()" *ngIf="showPrev"><<</button>
+                    {{currentPage + 1}} de {{pages}} páginas
+                    <button class="button small" (click)="next()" *ngIf="showNext">>></button>
+                </div>
+                
+                <select (change)="updateAmount($event)">
+                    <option [value]="5">5</option>
+                    <option [value]="10">10</option>
+                    <option [value]="20">20</option>
+                </select>
+            </div>
+        
+            
+        </section>
+        
+        
+    </section>
+
+    
+</section>

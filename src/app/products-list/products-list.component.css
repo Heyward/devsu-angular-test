@@ -1,0 +1,48 @@
+#producto-list #list{
+    padding: 20px;
+    background-color: #FFFFFF;
+}
+
+#producto-list #list #table{
+    height: 300px;
+    overflow-y: auto;
+}
+
+#producto-list #list table{
+    min-width: 100%;
+    color: #727275;
+}
+
+#producto-list #list table thead{
+    background-color: #F9FAFC;
+    height: 40px;
+    text-align: left;
+}
+
+#producto-list #list table td{
+    height: 40px;
+}
+
+#producto-list #list table td{
+    border-bottom: solid 1px #727275;
+}
+
+#producto-list #list #footer{
+    margin-top: 10px;
+    height: 20px;
+}
+
+#producto-list #list #footer #total{
+    float: left;
+}
+
+#producto-list #list #footer #paginator{
+    float: right;
+}
+
+#producto-list #list #footer #paginator div{
+    display: inline-block;
+    width: auto;
+    margin-right: 10px ;
+}
+
